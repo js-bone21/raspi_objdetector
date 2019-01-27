@@ -4,6 +4,7 @@
 import os
 import cv2
 import sys
+import datetime
 
 
 # Set up camera constants
@@ -18,6 +19,11 @@ camera_type = 'usb'
 
 camera = cv2.VideoCapture(0)
 
-tod_date = date "+%Y-%m-%d"
-cv2.imwrite('opencv_img'+ tod_date+'.png',image)
+# Read from the camera
+return_value, image = camera.read()
+
+now = datetime.datetime.now()
+# Save the image
+# Add this 'now.strftime("%H:%M")' into filename if you wish to add a timestamp to the captured images
+cv2.imwrite('/home/pi/Documents/ocvpy/images/opencv_img'+'.png',image)
 del(camera)
